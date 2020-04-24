@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Admin!{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="col-2">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link " id="v-pills-home-tab"  href="{{ path('home') }}" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+          <a class="nav-link" id="v-pills-addArticle-tab"  href="{{ path('create_article') }}" role="tab" aria-controls="v-pills-article" aria-selected="false">Add Article</a>
+          <a class="nav-link active" id="v-pills-contact-tab" href="{{ path('contact_list') }}" role="tab" aria-controls="v-pills-contact" aria-selected="false">Contact</a>
+          <a class="nav-link" id="v-pills-settings-tab"  href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+      </div>
+  </div>
+
+  <div class="col-10 p-5">
+    <div class="tab-pane fade show active" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-contact-tab">
+        <h1 class="text-center">Contact list</h1>
+        {% for contact in contacts %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">Created at</th>
+                <th scope="col">Last name</th>
+                <th scope="col">First name</th>
+                <th scope="col">Email address</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{contact.createdAt|date('d/m/Y')}}</td>
+                    <td>{{contact.nom}}</td>
+                    <td>{{contact.prenom}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.sujet}}</td>
+                    <td>{{contact.message}}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}      
+    </div>
+  </div>
+</div>
+{% endblock %}

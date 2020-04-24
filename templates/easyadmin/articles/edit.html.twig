@@ -1,0 +1,9 @@
+{% extends '@EasyAdmin/default/edit.html.twig' %}
+
+{% block content_title %}
+    <a href="#" class="float-right btn btn-primary" target="_blank">Voir un truc</a>
+    {% apply spaceless %}
+        {% set _default_title = 'edit.page_title'|trans(_trans_parameters, 'EasyAdminBundle') %}
+        {{ _entity_config.edit.title is defined ? _entity_config.edit.title|trans(_trans_parameters) : _default_title }}
+    {% endapply %}
+{% endblock %}

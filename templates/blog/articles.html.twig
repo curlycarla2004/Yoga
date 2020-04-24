@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yom blog{% endblock %}
+
+{% block body %}
+    <div class="content-area">
+    <h1 class="text-dark text-center pb-5">BLOG</h1>
+        <div class="container">
+            <div class="row">
+                <!-- blog grid -->
+                <div id="masonry" class="dlab-blog-grid-2" style="width: 100%;">
+                    {% for article  in articles %}
+                
+                    <div class="post card-container col-lg-6 col-md-6 col-sm-12">
+                        <div class="blog-post blog-grid blog-rounded blog-effect1">
+                            <div class="dlab-post-media dlab-img-effect" id="blogimage" "> 
+                                <a href="#"><img src="{{ vich_uploader_asset(article, 'imageFile')  }}" alt="{{article.title}}"/></a> 
+                            </div>
+                            <div class="dlab-info p-a20 border-1">
+                                <div class="dlab-post-title ">
+                                    <h4 class="post-title"><a href=" {{ path('article', {slug:article.slug}) }}">{{article.title}}</a></h4>
+                                </div>
+                                <div class="dlab-post-meta ">
+                                    <ul>
+                                        <li class="post-date"> <i class="ti-calendar"></i><strong>{{article.dateCreation|date('d/m/Y')}}</strong> </li>
+                                        <li class="post-author"><i class="ti-user"></i>By <a href="#">{{article.author}}</a> </li>
+                                        <li class="post-comment"><i class="ti-comment-alt"></i> <a href="#">{{ article.getComments|length }}</a> </li>
+                                    </ul>
+                                </div>
+                                <div class="dlab-post-text">
+                                    <p>{{ article.text|striptags|length > 300 ? article.text|striptags|easyadmin_truncate(300, true, "...")|raw  : article.text|striptags|raw }}</p>
+                                    {# <p>{{ (article.text|length > 300 ? article.text|striptags|slice(0, 300) ~ '…' : article.text)  }}</p> #}
+                                </div>
+                                <div class="dlab-post-readmore blog-share"> 
+                                    <a href=" {{ path('article', {slug:article.slug}) }}" title="READ MORE" rel="bookmark" class="site-button outline outline-2">READ MORE
+                                        <i class="ti-arrow-right"></i>
+                                    </a>
+                                    <div class="share-btn">
+                                        <ul class="clearfix">
+                                            <li><a href="https://www.instagram.com" class="site-button sharp"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="https://www.facebook.com" class="site-button sharp"><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href="#" class="site-button sharp"><i class="fa fa-youtube"></i></a></li>
+                                            <li class="share-button"><a href="#" class="site-button sharp"><i class="fa fa-share-alt"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- blog grid END -->
+                <!-- Pagination start -->
+                <div class="pagination-bx clearfix  col-md-12 text-center">
+                    <ul class="pagination">
+                        <li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li class="next"><a href="#">Next <i class="ti-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Pagination END -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content END-->
+
+        
+{% endblock %}

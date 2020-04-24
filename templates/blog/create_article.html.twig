@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New article{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-2">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab"  href="{{ path('home') }}" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+            <a class="nav-link" id="v-pills-addArticle-tab"  href="{{ path('create_article') }}" role="tab" aria-controls="v-pills-article" aria-selected="false">Add Article</a>
+            <a class="nav-link" id="v-pills-messages-tab"  href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+            <a class="nav-link" id="v-pills-settings-tab"  href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+        </div>
+    </div>
+
+    <div class="col-10 section-full bg-white" id="contact">
+        <div class="row dzseth">
+            <div class="container bg-gray">
+                <div class="section-head text-center">
+                    <div class="container pt-5">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+
+                    {% if nouveau %}
+                        <h2 class="text-uppercase  ">Create new article</h2>
+                    {% else %}
+                        <a href="{{ path('create_article', {id: article.id, action: 'delete'}) }} " class="text-danger float-right btn">Supprimer</a>
+                        <h2 class="text-uppercase"> {{ article.title }}</h2>
+                    {% endif %}
+                    <div class="dlab-separator bg-primary "></div>
+                </div>
+            
+                <div class="p-lr30 clearfix m-b30 contact-style-1">
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+    <script src="{{ asset('js/summernote.js') }}"></script>
+
+{% endblock %}

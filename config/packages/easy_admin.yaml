@@ -1,0 +1,75 @@
+easy_admin:
+  site_name: '<strong>Customize your website </strong>'
+
+  user:
+    name_property_path: 'email'
+    display_name: true
+    display_avatar: false
+
+  design:
+    form_theme:
+        - '@EasyAdmin/form/bootstrap_4.html.twig'
+        - '@VichUploader/Form/fields.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+    assets:
+      css:
+        - '/css/easyadmin.css'
+    menu:
+      - { label: Back to website, icon: arrow-left, route: accueil}
+
+      - { entity: 'Articles', label: 'Articles', icon: 'book'}
+      - { entity: 'Contact', label: 'Contact', icon: 'id-card'}
+      - { entity: 'Comments', label: 'Comments', icon: 'comments'}
+      - { entity: 'User', label: 'User', icon: 'user'}
+      - { entity: 'Content', label: 'Content Home Page', icon: 'book'}
+     
+
+  entities:
+      Articles:
+        class: App\Entity\Articles  
+        list:
+          fields: 
+            - { property: 'featured_image', title: 'title', label: 'Image', type: 'image', base_path: '%app.path.featured_images%'}
+            - { property: 'date_creation', label: Crée}
+            - { property: 'title', label: Title}
+            - { property: 'text', label: Contenu }
+            - { property: 'author', label: Author}
+            
+        form:
+          fields:
+            - title
+            - author
+            - { property: 'text', type: 'fos_ckeditor', type_options: {config_name: 'main_config' }}
+            - { property: 'imageFile', template: 'article.html.twig', type: 'vich_image', label: 'Image'} 
+        
+        templates:
+          edit: 'easyadmin/articles/edit.html.twig'
+      
+      
+      # -------
+      Contact:
+        class: App\Entity\Contact
+ 
+      
+      Comments:
+        class: App\Entity\Comments
+      
+      User:
+        class: App\Entity\User
+
+      Content:
+        class: App\Entity\Content
+        disabled_actions: [new, delete]
+        list:
+          fields: 
+            - { property: 'name', label: Quel texte ?}
+            - { property: 'image', label: Image, type: image}
+            - { property: 'text', label: Text}
+        form:
+          fields:
+            - { property: image, label: URL de l'image }
+            - { property: 'text', type: 'fos_ckeditor', type_options: {config_name: 'main_config'}}
+
+        templates:
+          edit: 'easyadmin/content/edit.html.twig'
+          
