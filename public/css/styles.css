@@ -1,0 +1,27 @@
+/* personalise css */
+#blogimage{
+    width: 570px !important;
+    height: 380px !important;
+}
+
+.footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("/images/hanka.jpg");
+  
+    /* Set a specific height */
+    height: 850px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+ 

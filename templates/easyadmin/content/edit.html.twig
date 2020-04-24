@@ -1,0 +1,20 @@
+{% extends '@EasyAdmin/default/edit.html.twig' %}
+{% set content = entity %}
+
+{% block entity_form %}
+
+    <h1>{{ content.name }}</h1>
+
+    {{ form_start(form) }}
+
+        <div class="{{ not content.type is same as(0) ? 'd-none' }}">
+            {{ form_row(form.text) }}
+        </div>
+
+        <div class="{{ not content.type is same as(1) ? 'd-none' }}">
+            {{ form_row(form.image) }}
+        </div>
+
+    {{ form_end(form) }}
+
+{% endblock entity_form %}
