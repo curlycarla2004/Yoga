@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
 
 use App\Form\ArticlesType;
 
@@ -101,7 +102,7 @@ class BlogController extends AbstractController
      /**
      * @Route("/article/{slug}", name="article")
      */
-    public function article($slug, Request $request){
+    public function article($slug, Request $request, ArticlesRepository $articlesRepo){
         $em = $this->getDoctrine()->getManager(); //em entity manager
         $articlesRepo = $em->getRepository(Articles::class);
 
@@ -154,7 +155,8 @@ class BlogController extends AbstractController
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'post'=>$post,
-            'recentArticles'=> $recentArticles
+            'recentArticles'=> $recentArticles,
+            'slug'=>$slug
         ]);
             
      }
@@ -162,11 +164,17 @@ class BlogController extends AbstractController
      /**
      * @Route("/articles", name="articles")
      */
-    public function articles( ArticlesRepository $articlesRepo)
+    public function articles( Request $request, ArticlesRepository $articlesRepo, PaginatorInterface $paginator)
     {
         // Uniquement $active == 1
-        $articles = $articlesRepo->findBy(array('active'=> 1));
-        // $articles = $articlesRepo->findAll();
+        // $articles = $articlesRepo->findBy(array('active'=> 1));
+
+        $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy(array('active'=> 1));
+        $articles = $paginator->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            4 // Nombre de résultats par page
+        );
 
         return $this->render('blog/articles.html.twig', [
             'articles' => $articles,

@@ -44,9 +44,9 @@ class Articles
 
     /**
      * 
-     * 0 = supprimé
+     * 0 = brouillon
      * 1 = en ligne
-     * 2 = brouillon
+     * 
      * 
      * @ORM\Column(type="smallint")
      */
@@ -95,7 +95,7 @@ class Articles
         $this->comments = new ArrayCollection();
         $this->date_creation = new \DateTime();
         $this->updatedAt = new \DateTime();
-        $this->active = 2;
+        $this->active = 0;
     }
 
     public function getId(): ?int

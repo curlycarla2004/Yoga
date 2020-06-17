@@ -1,5 +1,5 @@
 easy_admin:
-  site_name: '<strong>Customize your website </strong>'
+  site_name: '<strong> Haničko here you can customize your website:) </strong>'
 
   user:
     name_property_path: 'email'
@@ -15,13 +15,13 @@ easy_admin:
       css:
         - '/css/easyadmin.css'
     menu:
-      - { label: Back to website, icon: arrow-left, route: accueil}
+      - { label: Back to your website, icon: arrow-left, route: accueil}
 
       - { entity: 'Articles', label: 'Articles', icon: 'book'}
       - { entity: 'Contact', label: 'Contact', icon: 'id-card'}
       - { entity: 'Comments', label: 'Comments', icon: 'comments'}
-      - { entity: 'User', label: 'User', icon: 'user'}
       - { entity: 'Content', label: 'Content Home Page', icon: 'book'}
+      - { entity: 'GalleryAdmin', label: 'Gallery Admin', icon: 'image'}
      
 
   entities:
@@ -30,6 +30,7 @@ easy_admin:
         list:
           fields: 
             - { property: 'featured_image', title: 'title', label: 'Image', type: 'image', base_path: '%app.path.featured_images%'}
+            - { property: 'active', label: Published, type: 'toggle'}
             - { property: 'date_creation', label: Crée}
             - { property: 'title', label: Title}
             - { property: 'text', label: Contenu }
@@ -49,13 +50,16 @@ easy_admin:
       # -------
       Contact:
         class: App\Entity\Contact
+        disabled_actions: [new, edit]
+        templates:
+          list: 'easyadmin/contact/list.html.twig'
  
       
       Comments:
         class: App\Entity\Comments
-      
-      User:
-        class: App\Entity\User
+        disabled_actions: [new, edit]
+        templates:
+          list: 'easyadmin/comments/list.html.twig'
 
       Content:
         class: App\Entity\Content
@@ -63,13 +67,27 @@ easy_admin:
         list:
           fields: 
             - { property: 'name', label: Quel texte ?}
-            - { property: 'image', label: Image, type: image}
+            # - { property: 'image', label: Image, type: image}
+            - { property: 'content_image', label: 'Image' , type: 'image', base_path: '%app.path.content_images%'}
             - { property: 'text', label: Text}
         form:
           fields:
-            - { property: image, label: URL de l'image }
+            # - { property: image, label: URL de l'image }
+            - { property: 'imageFile', template: 'index.html.twig', type: 'vich_image', label: 'Upload image', help: 'Select file to upload / change image' }
             - { property: 'text', type: 'fos_ckeditor', type_options: {config_name: 'main_config'}}
-
+        
         templates:
           edit: 'easyadmin/content/edit.html.twig'
           
+      GalleryAdmin:
+        class: App\Entity\GalleryAdmin
+        list:
+          fields: 
+            - { property: 'gallery_image', label: 'Image' , type: 'image', base_path: '%app.path.gallery_images%'}
+
+        form:
+          fields:
+            - { property: 'imageFile', type: 'vich_image', label: 'Upload image', help: 'Select file to upload / change image' }
+        templates:
+          list: 'easyadmin/galleryAdmin/list.html.twig'
+        

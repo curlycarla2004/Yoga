@@ -51,8 +51,9 @@ class ArticlesType extends AbstractType
             //->add('active')
             ->add('active', ChoiceType::class, [
                 'choices'  => [
+                    'Brouillon' => 0,
                     'En ligne' => 1,
-                    'Brouillon' => 2,
+                    // 'Brouillon' => 2,
                 ],
             ])
             ->add('save', SubmitType::class, [
@@ -87,4 +88,6 @@ class ArticlesType extends AbstractType
             'data_class' => Articles::class,
         ]);
     }
+
+    
 }

@@ -1749,7 +1749,7 @@ dl dd {
     display: block;
     margin: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -3437,7 +3437,7 @@ blockquote:before {
 		display:block;
     }
     .header-nav .nav i {
-        float: right;
+        /* float: left; */
     }
     .header-nav .nav > li > a:hover,
     .header-nav .nav > li > a:active,
@@ -4363,7 +4363,7 @@ blockquote:before {
 .owl-theme .owl-dots .owl-dot {
     display: inline-block;
     zoom: 1;
-    *display: inline;
+    display: inline;
 }
 .owl-theme .owl-dots .owl-dot span {
     width: 10px;
@@ -5407,7 +5407,8 @@ ol.comment-list li .children li {
     display: none;
 }
 .comments-area .comment-form p {
-    width: 33.333%;
+    /* width: 33.333%; */
+    width: 50%;
     float: left;
     padding: 0 15px;
     margin-bottom: 30px;
@@ -5494,8 +5495,8 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .comments-area .comment-form p input[type="submit"]:hover,
 .comments-area .comment-form p input[type="submit"]:focus,
 .comments-area .comment-form p input[type="submit"]:active {
-    background-color: #eedf0c;
-    border-color: #eedf0c;
+    background-color: #9e9e9a;
+    border-color: #9e9e9a;
     color: #fff;
 }
 @media only screen and (max-width: 767px) {
@@ -5730,9 +5731,9 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .searchform input[type="submit"]:hover,
 .searchform input[type="submit"]:focus,
 .searchform input[type="submit"]:active {
-    background-color: #eedf0c;
+    background-color: #9e9e9a;
     color: #ffffff!important;
-    border-bottom-color: #eedf0c;
+    border-bottom-color: #9e9e9a;
 }
 /* Search BX style 1 */
 .search-bx.style-1 .input-group{
@@ -8275,7 +8276,8 @@ ul[class*="list-"]{
 }
 .acod-head a.collapsed,
 .acod-head a.collapsed:after {
-    color: #3d474a;
+    color: white;
+    font-weight: bolder;
 }
 .acod-head a:after {
     font-family:"themify";
@@ -8307,6 +8309,7 @@ ul[class*="list-"]{
 }
 .acod-content {
     margin: 20px;
+    color:rgba(255,255,255, 1);
 }
 
 /* accordian Style  */
@@ -10492,8 +10495,8 @@ ul[class*="list-"]{
 }
 .dlab-media img,
 .dlab-post-media img {
-    width: 100%;
-    height: auto;
+        width: 100%;
+        height: auto;
 }
 /* Box Background */
 .dlab-box-bg{
@@ -11032,7 +11035,7 @@ footer.footer-white .footer-bottom a {
 .section-head p {
     padding-top: 10px;
     font-size: 14px;
-    color: #494949;
+    /* color: #494949; */
 }
 .text-center.section-head p {
     margin-left: auto;

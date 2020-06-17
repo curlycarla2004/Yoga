@@ -2,24 +2,49 @@
 <html lang="en">
     {% set currentPage = app.request.attributes.get('_route') %}
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165915876-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        <!-- FAVICONS ICON -->
-        {# <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon" /> #}
-        {# <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" /> #}
-        <link rel="icon" type="image/png" sizes="150x150" href="{{ asset('images/faviconYom.png') }}">
-        <link rel="shortcut icon" type="image/x-icon"  sizes="150x150" href="{{ asset('images/faviconYom.png') }}" />
+            gtag('config', 'UA-165915876-1');
+        </script>
 
         <!-- MOBILE SPECIFIC -->
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+        <meta name="Content-Language" content="en">
+        <meta name="keywords" content="yoga, well-being, exercise, movement, workout, spiritual, yoga studio, yoga classes, hatha yoga, vinyasa yoga, yoga nidra, meditation, relaxation, workshops,events, aarhus, denmark, czech,yoga teacher">
+        <meta name="author" content="Hana Hnilicova">
 
-        <title>{% block title %}YOM Yoga{% endblock %}</title>
+        <title>{% block title %}YOM - yoga on/off the mat | by Hana Hnilicova{% endblock %}</title>
+        <meta name="description" content="{% block description %}Cultivate inner stillness and beauty. Build strenght, stability and flexibility. Reconnect to yourself and recharge. Live YOM yoga on and off the mat.{% endblock %}">
+        
+        {% block facebook %}
+        <meta property="og:locale" content="en_US">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ block('title') }}">
+        <meta property="og:description" content="Cultivate inner stillness and beauty. Build strenght, stability and flexibility. Reconnect to yourself and recharge. Live YOM yoga on and off the mat.">
+        <meta property="og:url" content="https://yom-yoga.com/">
+        <meta property="og:site_name" content="YOM - yoga on/off the mat">
+        <meta property="fb:app_id" content="259443575421830" />
+        {% endblock %}
+        
+        {% block ogimage %}
+            <meta property="og:image" content="{{ asset('images/hanka.jpg') }}">
+        {% endblock ogimage %}
 
+        <!-- FAVICONS ICON -->
+        <link rel="icon" type="image/png" sizes="150x150" href="{{ asset('images/logoYom1.png') }}">
+        <link rel="shortcut icon" type="image/x-icon"  sizes="150x150" href="{{ asset('images/logoYom1.png') }}" />
+       
         {% block stylesheets %}
         <!-- STYLESHEETS -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
 	    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         
@@ -35,15 +60,20 @@
         {% endblock %}
     </head>
 
-
-    <body id="bg">
+    <body>
         <div id="loading-area"></div>
         <div class="page-wraper">
+
+            <!--facebook share-->
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=259443575421830&autoLogAppEvents=1"></script>
+
             {#Header#}
+
                 {{ render(controller('App\\Controller\\YomController::header', { currentPage: currentPage })) }}
+                
                 {# {% include 'yom/header.html.twig' %} #}
                 
-           
                 {% for label, messages in app.flashes %}
                     {% for message in messages %}
                         <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
@@ -52,8 +82,7 @@
                         </div>
                     {% endfor %}
                 {% endfor %}
-         
-                  
+          
             {% block body %}
                 
             {% endblock %}
@@ -67,9 +96,11 @@
         </div>
 
         {% block javascripts %}
-        <!-- JavaScript  files ========================================= -->
+        <!-- JavaScript  files -->
         <script src="{{ asset('js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
-        <script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+        <script src="{{ asset('js/parallax.min.js') }}"></script>
+        <script src="{{ asset('js/parallax.js') }}"></script>
+        <script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script><!-- POPPER.MIN JS -->
         <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
         <script src="{{ asset('plugins/bootstrap-select/bootstrap-select.min.js') }}"></script><!-- FORM JS -->
         <script src="{{ asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js') }}"></script><!-- FORM JS -->
@@ -86,7 +117,7 @@
         <script src="{{ asset('js/dz.carousel.js') }}"></script><!-- SORTCODE FUCTIONS  -->
         <script src="{{ asset('https://www.google.com/recaptcha/api.js')}}"></script> <!-- Google API For Recaptcha  -->
         <script src="{{ asset('js/dz.ajax.js') }}"></script><!-- Contact Us -->
-        <!-- REVOLUTION JS FILES -->
+        <!-- REVOLUTION JS FILES-->
         <script src="{{ asset('plugins/revolution/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
         <script src="{{ asset('plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
         <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
@@ -100,6 +131,7 @@
         <script src="{{ asset('plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
         <script src="{{ asset('plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
         <script  src="{{ asset('js/rev.slider.js') }}"></script>
+        
         <script>
             jQuery(document).ready(function() {
                 
@@ -111,6 +143,9 @@
 
         <script src="{{ asset('js/custom.js') }}"></script>
         <!-- custom fuctions  -->
+
+        
+
         {% endblock %}
     </body>
 

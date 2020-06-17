@@ -60,13 +60,13 @@
 .pagination > .active > a:focus, 
 .pagination > .active > span:focus,
 .progress .progress-bar span {
-    background-color: #eedf0c;
+    background-color: #9e9e9a;
 }
 .about-us .dlab-tabs .nav-tabs li.active{
-	border-right: 4px solid #eedf0c;
+	border-right: 4px solid #9e9e9a;
 }
 .progress .progress-bar span:before{
-	border-top: 8px solid #eedf0c;
+	border-top: 8px solid #9e9e9a;
 }
 
 /* Rgba color */
@@ -124,7 +124,7 @@ h6 a:hover,
 .header-style-1 .header-nav .nav > li.active > a, 
 .header-style-1 #myNavbar li.active a,
 .header-nav .nav > li > a.nav-link.active  {
-    color: #eedf0c;
+    color: #9e9e9a;
 }
 
 /*===================== 
@@ -140,18 +140,18 @@ blockquote,
 .owl-dots-style .owl-dots .owl-dot.active span,
 .header-style-1 .header-nav .nav > li.active > a, 
 .header-style-1 #myNavbar li.active a{
-    border-color: #eedf0c;
+    border-color: #9e9e9a;
 }
 .draw:hover:after {
-    border-bottom-color: #eedf0c;
-    border-left-color: #eedf0c;
+    border-bottom-color: #9e9e9a;
+    border-left-color: #9e9e9a;
 }
 .draw:hover:before {
-    border-top-color: #eedf0c;
-    border-right-color: #eedf0c;
+    border-top-color: #9e9e9a;
+    border-right-color: #9e9e9a;
 }
 .pricingtable-wrapper.active .pricingtable-inner{
-	box-shadow:0 0 0 2px #eedf0c inset;
+	box-shadow:0 0 0 2px #9e9e9a inset;
 }
 /*===================== 
 	Secondery bg color

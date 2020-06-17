@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="content-area">
-    <h1 class="text-dark text-center pb-5">BLOG</h1>
+    <h1 class="text-dark text-center pb-5">NOTES</h1>
         <div class="container">
             <div class="row">
                 <!-- blog grid -->
@@ -13,8 +13,8 @@
                 
                     <div class="post card-container col-lg-6 col-md-6 col-sm-12">
                         <div class="blog-post blog-grid blog-rounded blog-effect1">
-                            <div class="dlab-post-media dlab-img-effect" id="blogimage" "> 
-                                <a href="#"><img src="{{ vich_uploader_asset(article, 'imageFile')  }}" alt="{{article.title}}"/></a> 
+                            <div class="dlab-post-media dlab-img-effect" id="blogimage"> 
+                                <a href="{{ path('article', {slug:article.slug}) }}"><img src="{{ vich_uploader_asset(article, 'imageFile') |imagine_filter('reduc') }}" alt="{{article.title}}"/></a> 
                             </div>
                             <div class="dlab-info p-a20 border-1">
                                 <div class="dlab-post-title ">
@@ -37,28 +37,26 @@
                                     </a>
                                     <div class="share-btn">
                                         <ul class="clearfix">
-                                            <li><a href="https://www.instagram.com" class="site-button sharp"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="https://www.facebook.com" class="site-button sharp"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#" class="site-button sharp"><i class="fa fa-youtube"></i></a></li>
-                                            <li class="share-button"><a href="#" class="site-button sharp"><i class="fa fa-share-alt"></i></a></li>
+                                            <li><a href="https://www.instagram.com/liveyomlife/" target="_blank" class="site-button sharp"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="https://www.facebook.com/liveyomlife/" target="_blank" class="site-button sharp"><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href="#" class="site-button sharp" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                            <li class="share-button"><a href="#" target="_blank" class="site-button sharp"><i class="fa fa-share-alt"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                    {% endfor %}  
                 </div>
                 <!-- blog grid END -->
+                
                 <!-- Pagination start -->
                 <div class="pagination-bx clearfix  col-md-12 text-center">
                     <ul class="pagination">
-                        <li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li class="next"><a href="#">Next <i class="ti-arrow-right"></i></a></li>
+                        <div class="navigation">
+                            {{ knp_pagination_render(articles) }}
+                        </div>
                     </ul>
                 </div>
                 <!-- Pagination END -->
@@ -67,6 +65,5 @@
     </div>
 </div>
 <!-- Content END-->
-
-        
+       
 {% endblock %}

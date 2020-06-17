@@ -1,42 +1,26 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
-{% block title %}Yom Yoga!{% endblock %}
+{% block title %}YOM - yoga on/off the mat | by Hana Hnilicova{% endblock %}
+{% block description %}Cultivate inner stillness and beauty. Build strenght, stability and flexibility. Reconnect to yourself and recharge. Live YOM yoga on and off the mat.{% endblock %}
 
 {% block body %}
 <!-- Content -->
 <div class="page-content">
-
-    <!-- Container element -->
+    <!--Image accueil-->
     <div class="parallax"></div> 
 
     <!-- About Us -->
-    <div class="section-full bg-white content-inner-1 dlab-about-1" id="about-us">
+    <div class="section-full parallax-about content-inner-1 dlab-about-1" id="about-us" style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_about_background)}})">
         <div class="container">
-            <div class="row equal-wraper">
-                <div class="col-lg-2 col-md-2 dis-tbl equal-col text-md-left text-sm-center text-center">
-                    <div class="dis-tbl-cell text-center pb-5">
-                        <h2 class="m-mb-10"><br>Hi, <br> I'm Hana</h2>
-                    </div>
-                </div>
-                <div class="col-lg-10 col-md-10 dis-tbl equal-col text-md-left text-sm-center text-center">
-                    <div class="dis-tbl-cell text-center pb-3">
-                        <h5 class="text-right">{{ content.accueil_section1_text |raw}}</h5>
-                    </div>
-                </div>
+        <div class="section-head text-white text-center">
+                <h2 class="text-uppercase textwhite" >{{ content.accueil_title_about |raw}}</h2>
+                <div class="dlab-separator bg-light"></div>
             </div>
-        </div>
-    </div>
-    <div class="section-full bg-dark text-white content-inner-1 dlab-about">
-        <div class="container">
             <div class="row equal-wraper">
-                <div class="col-lg-9 col-md-9  ">
-                    <div class="dis-tbl-cell text-left pt-4 font-italic">
-                        <h4 >{{ content.accueil_section2_text |raw }}</h4>   
-                    </div>  
-                </div>
-                <div class="col-lg-3 col-md-3  ">
-                    <img src="{{ asset('images/hankaphoto.jpg') }}" width="200" height="400" alt="">
-                    {# <img src="{{ content.accueil_image_voiture }}" height="400" alt=""> #}
+                <div class="col-lg-12 col-md-12 dis-tbl equal-col text-md-left text-sm-center px-5">
+                    <div class="dis-tbl-cell text-about">
+                        {{ content.accueil_section1_text |raw}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,73 +28,16 @@
     <!-- About Us END -->
 	
     <!-- Yoga -->
-    <div class="section-full bg-gray content-inner what-we-do overlay-white-dark" id="yoga" style="background-image:url(images/blackandwhite.jpg);">
+    <div class="section-full parallax-yoga content-inner-1" id="yoga" style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_yoga_background)}})">
         <div class="container">
-            <div class="section-head text-center text-black">
-                <h2 class="text-uppercase">Yoga</h2>
-                <div class="dlab-separator bg-primary"></div>
-                <p>I teach Vinyasa Flow and Yoga Nidra. My approach is simple, practical and down to earth.</p>
+            <div class="section-head text-white text-center">
+                <h2 class="text-uppercase textwhite">{{ content.accueil_title_yoga |raw}}</h2>
+                <div class="dlab-separator bg-light"></div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6 m-b30">
-                    <div class="icon-bx-wraper center p-a30 draw">
-                        <div class="icon-md  text-primary m-b20"> <span class="icon-cell"><i class="fa fa-bell text-gd"></i></span> </div>
-                        <div class="icon-content">
-                            <div class="dlab-separator bg-primary"></div>
-                            <h4 class="dlab-tilte">Hatha Vinyasa yoga</h4>
-                            <p>The class is based in ásana practice(poses)and pranayama(breathing techniques).</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 m-b30">
-                    <div class="icon-bx-wraper center p-a30 draw">
-                        <div class="icon-md  text-primary m-b20"> <span class="icon-cell"><i class="fa fa-users text-gd"></i></span> </div>
-                        <div class="icon-content">
-                            <div class="dlab-separator bg-primary"></div>
-                            <h4 class="dlab-tilte">Small Group Classes</h4>
-                            <p>I offer group yoga nidra sessions, as well as co-creative one-on-one sessions.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 m-b30">
-                    <div class="icon-bx-wraper center p-a30 draw">
-                        <div class="icon-md  text-primary m-b20"> <span class="icon-cell"><i class="fa fa-refresh text-gd"></i></span> </div>
-                        <div class="icon-content">
-                            <div class="dlab-separator bg-primary"></div>
-                            <h4 class="dlab-tilte">Renewing Your Mind</h4>
-                            <p>Key words defining my approach are self-awareness, inspiration and best practice.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 m-b30">
-                    <div class="icon-bx-wraper center p-a30 draw">
-                        <div class="icon-md  text-primary m-b20"> <span class="icon-cell"><i class="fa fa-rocket text-gd"></i></span> </div>
-                        <div class="icon-content">
-                            <div class="dlab-separator bg-primary"></div>
-                            <h4 class="dlab-tilte">Vinyasa a style of Hatha Yoga</h4>
-                            <p>Sometimes it is called Flow yoga, in which breath and movement unfolds synchronously and continuously into what becomes a yoga sequence. 
-                            And so whilst the breath underlines the movement, poses unfold  one after another.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 m-b30">
-                    <div class="icon-bx-wraper center p-a30 draw">
-                        <div class="icon-md  text-primary m-b20"> <span class="icon-cell"><i class="fa fa-comments text-gd"></i></span> </div>
-                        <div class="icon-content">
-                            <div class="dlab-separator bg-primary"></div>
-                             <h4 class="dlab-tilte">During the classes</h4>
-                            <p>Balancing effort and surrender in each pose, as well as movement and stillness throughout the whole practice, so that once intentions and sensations are integrated, the flow naturally unfolds.  </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 m-b30">
-                    <div class="icon-bx-wraper center p-a30 draw">
-                        <div class="icon-md  text-primary m-b20"> <span class="icon-cell"><i class="fa fa-heart text-gd"></i></span> </div>
-                        <div class="icon-content">
-                            <div class="dlab-separator bg-primary"></div>
-                            <h4 class="dlab-tilte">Yoga Nidra</h4>
-                            <p>Yoga called nidra(translates as yogic sleep) is an ultimate amazing relaxation practice known for many centuries and truly potent meditative resource for healing and empowerment and many others.</p>
-                        </div>
+            <div class="row equal-wraper">
+                <div class="col-lg-12 col-md-12 dis-tbl equal-col text-md-left text-sm-center">
+                    <div class="dis-tbl-cell text-yoga">
+                        {{ content.accueil_section2_text |raw}}
                     </div>
                 </div>
             </div>
@@ -118,32 +45,15 @@
     </div>
     <!-- Yoga END -->
 
-    <!-- Coaching maybe we will add this section later-->
-    {# <div class="section-full content-inner-2 bg-white creative-work" id="coaching">
-        <div class="section-head  text-center text-black">
-            <h2 class="text-uppercase">Coaching</h2>
-            <div class="dlab-separator bg-primary"></div>
-            <p>I am also a mental coach in training...</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis reprehenderit 
-            molestias nihil suscipit possimus commodi, ullam excepturi labore numquam minus autem 
-            eaque dicta rerum doloremque, aliquam dolor unde quos!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis reprehenderit 
-            molestias nihil suscipit possimus commodi, ullam excepturi labore numquam minus autem 
-            eaque dicta rerum doloremque, aliquam dolor unde quos!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis reprehenderit 
-            molestias nihil suscipit possimus commodi, ullam excepturi labore numquam minus autem 
-            eaque dicta rerum doloremque, aliquam dolor unde quos!</p>
-        </div>
-    </div> #}
-    <!-- Coaching END -->
+  
 
-    <!-- Pricing Accordion Bg Primary  -->
-    <div class="section-full bg-white content-inner" id="prices">
+    <!-- Practice Accordion Bg Primary  -->
+    <div class="section-full parallax-practice bg-white content-inner" id="practice" style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_practice_background)}})">
         <div class="container">
-            <div class="section-head text-black text-center">
-                <h2 class="text-uppercase">Prices</h2>
-                <div class="dlab-separator bg-primary"></div>
-                <p>These are my actual prices for private or group lessons. </p>
+            <div class="section-head text-white text-center">
+                <h2 class="text-uppercase textwhite">{{ content.accueil_title_practice |raw}}</h2>
+                <div class="dlab-separator bg-light"></div>
+                <p class="text-practice">{{ content.practice_underheader |raw}}</p>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
@@ -152,32 +62,26 @@
                             <div class="dlab-accordion toggle space" id="accordion7">
                                 <div class="panel">
                                     <div class="acod-head">
-                                        <h6 class="acod-title text-center"> <a data-toggle="collapse" href="#collapseOne7" class="collapsed"> Private Lessons</a> </h6>
+                                        <h6 class="acod-title text-center"> <a data-toggle="collapse" href="#collapseOne7" class="collapsed"> {{ content.practice_header_1 |raw}}</a> </h6>
                                     </div>
                                     <div id="collapseOne7" class="acod-body collapse">
-                                        <div class="acod-content">Web design lorem ipsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet 
-                                            dolore magna aliquam erat volutpat. Claritas est etiam processus. ipsum dolor sit amet, consectetuer adipiscing elit, sed diam 
-                                            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Claritas est etiam processus.</div>
+                                        <div class="acod-content">{{ content.accueil_section_openclass_text |raw}}</div>
                                     </div>
                                 </div>
                                 <div class="panel">
                                     <div class="acod-head">
-                                        <h6 class="acod-title text-center"> <a data-toggle="collapse" href="#collapseTwo7" class="collapsed">Group lessons</a> </h6>
+                                        <h6 class="acod-title text-center"> <a data-toggle="collapse" href="#collapseTwo7" class="collapsed">{{ content.practice_header_2 |raw}}</a> </h6>
                                     </div>
                                     <div id="collapseTwo7" class="acod-body collapse">
-                                        <div class="acod-content">Graphic design lorem ipsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet 
-                                            dolore magna aliquam erat volutpat. Claritas est etiam processus. ipsum dolor sit amet, consectetuer adipiscing elit, sed diam 
-                                            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Claritas est etiam processus.</div>
+                                        <div class="acod-content">{{ content.accueil_section_privatesession_text |raw}}</div>
                                     </div>
                                 </div>
                                 <div class="panel">
                                     <div class="acod-head">
-                                        <h6 class="acod-title text-center"> <a data-toggle="collapse" href="#collapseThree7" class="collapsed"> Classes in a studio</a> </h6>
+                                        <h6 class="acod-title text-center"> <a data-toggle="collapse" href="#collapseThree7" class="collapsed"> {{ content.practice_header_3 |raw}}</a> </h6>
                                     </div>
                                     <div id="collapseThree7" class="acod-body collapse">
-                                        <div class="acod-content">Developement lorem ipsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet 
-                                            dolore magna aliquam erat volutpat. Claritas est etiam processus. ipsum dolor sit amet, consectetuer adipiscing elit, sed diam 
-                                            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Claritas est etiam processus.</div>
+                                        <div class="acod-content">{{ content.accueil_section_events_text |raw}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -185,85 +89,6 @@
                     </div>
                 </div>
             </div>
-            {# <div class="row">
-                <div class="pricingtable-row pricingtable-style1 col-lg-12">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <div class="pricingtable-wrapper ">
-                                <div class="pricingtable-inner draw">
-                                    <div class="pricingtable-title">
-                                        <h3>15 days free</h3>
-                                        <p>We are passionate about our clients. Pricing subject to volume.</p>
-                                    </div>
-                                    <div class="pricingtable-price"> 
-                                        <span class="pricingtable-bx">$99</span> 
-                                        <span class="pricingtable-type">Month</span> 
-                                    </div>
-                                    <ul class="pricingtable-features">
-                                        <li><i class="fa fa-check"></i> New Yoga Classes Added Weekly</li>
-                                        <li><i class="fa fa-check"></i> Practice Yoga Anytime, Anywhere</li>
-                                        <li><i class="fa fa-check"></i> Save 15% Instantly</li>
-                                        <li><i class="fa fa-check"></i> Technical Support </li>
-                                        <li><i class="fa fa-check"></i> Much more..</li>
-                                    </ul>
-                                    <div class="pricingtable-footer"> 
-                                        <a href="#" class="site-button button-3d m-r15">Get This Plan</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                            <div class="pricingtable-wrapper active">
-                                <div class="pricingtable-inner draw">
-                                    <div class="pricingtable-title">
-                                        <h3>Monthly subscription</h3>
-                                        <p>We are passionate about our clients. Pricing subject to volume.</p>
-                                    </div>
-                                    <div class="pricingtable-price"> 
-                                        <span class="pricingtable-bx">$199</span> 
-                                        <span class="pricingtable-type">Month</span> 
-                                    </div>
-                                    <ul class="pricingtable-features">
-                                        <li><i class="fa fa-check"></i> New Yoga Classes Added Weekly</li>
-                                        <li><i class="fa fa-check"></i> Practice Yoga Anytime, Anywhere</li>
-                                        <li><i class="fa fa-check"></i> Save 15% Instantly</li>
-                                        <li><i class="fa fa-check"></i> Technical Support </li>
-                                        <li><i class="fa fa-check"></i> Much more..</li>
-                                    </ul>
-                                    <div class="pricingtable-footer"> 
-                                        <a href="#" class="site-button button-3d m-r15">Get This Plan</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                            <div class="pricingtable-wrapper ">
-                                <div class="pricingtable-inner draw">
-                                    <div class="pricingtable-title">
-                                        <h3>Annual subscription</h3>
-                                        <p>We are passionate about our clients. Pricing subject to volume.</p>
-                                    </div>
-                                    <div class="pricingtable-price"> 
-                                        <span class="pricingtable-bx">$299</span> 
-                                        <span class="pricingtable-type">Month</span> 
-                                    </div>
-                                    <ul class="pricingtable-features">
-                                        <li><i class="fa fa-check"></i> New Yoga Classes Added Weekly</li>
-                                        <li><i class="fa fa-check"></i> Practice Yoga Anytime, Anywhere</li>
-                                        <li><i class="fa fa-check"></i> Save 15% Instantly</li>
-                                        <li><i class="fa fa-check"></i> Technical Support </li>
-                                        <li><i class="fa fa-check"></i> Much more..</li>
-                                    </ul>
-                                    <div class="pricingtable-footer"> 
-                                        <a href="#" class="site-button button-3d m-r15">Get This Plan</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Content END-->
-            </div>	 #}
         </div>	
     </div>	
     <!-- Pricing END -->
@@ -272,64 +97,58 @@
     <div class="section-full bg-white content-inner-1" id="notes">
         <div class="container">
             <div class="section-head text-black text-center">
-                <h2 class="text-uppercase">Our Latest Blog</h2>
+                <h2 class="text-uppercase">{{ content.accueil_title_notes |raw}}</h2>
                 <div class="dlab-separator bg-primary"></div>
-                <p>These are some of our recent design projects and we are so excited to show them to you. Work on the best projects for the best clients.</p>
+                <p>{{ content.notes_underheader |raw}}</p>
             </div>
-            
-            
             <div class="section-content">
                 <div class="blog-carousel mfp-gallery gallery owl-loaded owl-none owl-theme owl-carousel owl-dots-style">
                 {% for article  in articles %}
                     <div class="item">
-                        <div class="ow-blog-post">
-                            <div class="ow-post-media dlab-img-effect zoom-slow" > <img src="{{ vich_uploader_asset(article, 'imageFile')  }}" width="400" height="500" alt=""> </div>
+                        <div class="ow-blog-post"> 
+                            <div class="ow-post-media dlab-img-effect zoom-slow" > <img src="{{ vich_uploader_asset(article, 'imageFile')  }}" width="400" height="500" alt="{{article.title}}"> </div>
                             <div class="ow-post-info ">
                                 <div class="ow-post-title">
                                     <h5 class="post-title"> <a href="{{ path ('article', {slug:article.slug}) }}" title="Video post">{{article.title}}</a> </h5>
                                 </div>
                                 <div class="ow-post-meta">
                                     <ul>
-                                        <li class="post-date"> <i class="fa fa-calendar"></i><strong>{{article.dateCreation|date('d/m/Y')}}</strong> <span> 2016</span> </li>
+                                        <li class="post-date"> <i class="fa fa-calendar"></i><strong>{{article.dateCreation|date('d/m/Y')}}</strong></li>
                                         <li class="post-author"><i class="fa fa-user"></i>By <a href="#" title="Posts by demongo" rel="author">{{ article.author }}</a> </li>
                                     </ul>
                                 </div>
                                 <div class="ow-post-text">
                                     <p>{{ article.text|striptags|length > 150 ? article.text|striptags|easyadmin_truncate(150, true, "...")|raw  : article.text|striptags|raw }}</p>
-                                    {# <p>{{ (article.text|length > 150 ? article.text|slice(0, 150) ~ '…' : article.text) }}</p> #}
                                 </div>  
                             </div>
                         </div>
                     </div>
                 {% endfor %}
                 </div>
-            </div>
-            
+            </div> 
         </div>
     </div>
     <!-- NOTES - Blog END -->
+    
 
     <!-- Contact -->
-    <div class="section-full bg-white" id="contact">
-        <div class="row dzseth bg-gray">
-            {# <div class="col-xl-6 col-lg-4 p-lr0">
-                <iframe class="seth" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d461366.9341658761!2d75.78083751400216!3d25.39044087456868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f9b30c41bb44d%3A0x5f5c103200045588!2sKota%2C+Rajasthan!5e0!3m2!1sen!2sin!4v1507634116194" style="border:0; width:100%; min-height:300px;" allowfullscreen></iframe>
-            </div> #}
-            <div class="container bg-gray">
+    <div class="section-full parallax-contact" id="contact" style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_contact_background)}})">
+        <div class="dzseth">
+            <div class="container">
                 <div class="content-inner-1">
                     <div class="section-head text-center">
-                        <h2 class="text-uppercase">Contact </h2>
-                        <div class="dlab-separator bg-primary"></div>
-                        <p class="max-w500 m-auto m-b0">If you have any questions, you can contact with me so that i can give you a satisfying answer.</p>
+                        <h2 class="text-uppercase text-white">{{ content.accueil_title_contact |raw}} </h2>
+                        <div class="dlab-separator bg-light"></div>
+                        <p class="text-contact px-2">{{ content.accueil_section_contact |raw}}</p>
                     </div>
-                    <div class="p-lr30 clearfix m-b30 contact-style-1">
+                    <div class="p-lr30 clearfix m-b30 contact-style-1 py-1">
                         <div class="row justify-content-center">
-                            <div class="col-7">
+                            <div class="col-xl-10 col-lg-10 col-md-6 col-xs-6 col-sm-6">
                                 <div class="dzFormMsg"></div>
                                 <form method="post" class="dzForm" action="{{ path('contact') }}">
                                 <input type="hidden" value="Contact" name="whichform" >
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input name="lastname" type="text" required class="form-control" placeholder="Your Last Name">
@@ -343,6 +162,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group"> 
@@ -367,7 +187,7 @@
                                         {# <div class="col-lg-12">
                                             <div class="form-group recaptcha-box">
                                                 <div class="input-group">
-                                                    <div class="g-recaptcha" data-sitekey="<!-- Put reCaptcha Site Key -->" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                                                    <div class="g-recaptcha" data-sitekey="6LfCgPkUAAAAAChG21ixTmEsUEZ_DWkaSAgjFVnl" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
                                                     <input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
                                                 </div>
                                             </div>
@@ -386,5 +206,7 @@
     </div><!--/section-->
     <!-- Contact END -->
 
-</div><!--/page content-->
+</div>
+<!--/page content-->
 {% endblock %}
+

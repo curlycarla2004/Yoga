@@ -6,9 +6,12 @@
 parameters:
     #upload images avec Vich
     app.path.featured_images: /uploads/images/featured
-
+    app.path.content_images: /uploads/images/content
+    app.path.gallery_images: /uploads/images/gallery
     #upload images sans Vich
+    public_path: '%kernel.project_dir%/public'
     _images_directory: '%kernel.project_dir%/public/uploads/images/featured'
+    
 
 services:
     # default configuration for services in *this* file

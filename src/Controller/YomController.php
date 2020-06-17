@@ -15,7 +15,7 @@ class YomController extends AbstractController
      */
     public function accueil(ArticlesRepository $articlesRepo,  ContentRepository $contentRepo)
     {
-        $articles = $articlesRepo->findAll();
+        $articles = $articlesRepo->findBy(array('active'=> 1));
         $content = $contentRepo->findContent();
         return $this->render('yom/accueil.html.twig', [
             'articles' => $articles,
