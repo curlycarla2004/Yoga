@@ -26,7 +26,7 @@ class ContentRepository extends ServiceEntityRepository
             if($content_line->getText()) {
                 $value = $content_line->getText();
             }else{
-                $value = $content_line->getImage();
+                $value = $content_line->getContentImage();
             }
         
             $content[ $content_line->getK() ] = $value;

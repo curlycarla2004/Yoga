@@ -9,5 +9,17 @@ fos_ck_editor:
     configs:
         main_config:
             toolbar: full
-                # - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Strike','Blockquote', '-', 'Link', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Image', 'Table', '-', 'Styles', 'Format','Font','FontSize', '-', 'TextColor', 'BGColor', 'Source'] }
-            
+                
+            # toolbar:
+            #    - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Strike','Blockquote', '-', 'Link', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Image', 'Table', '-', 'Styles', 'Format','Font','FontSize', '-', 'TextColor', 'BGColor', 'Source'] }
+            #    - { name: "editor2" , items: ['imageuploader']}
+            #filebrowserBrowseRoute: elfinder
+            #filebrowserBrowseRouteParameters: []
+
+            filebrowserImageUploadRoute: admin_upload_image
+            filebrowserImageUploadRouteParameters: { upload: 1 }
+            filebrowserImageUploadRouteType: 0
+
+            filebrowserImageBrowseRoute: admin_browse_image
+            filebrowserImageBrowseRouteParameters: { upload: 1 }
+            filebrowserImageBrowseRouteType: 0

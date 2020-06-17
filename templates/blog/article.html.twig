@@ -1,6 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yom Blog single listing{% endblock %}
+{% block title %}Yom Blog - {{article.title}} {% endblock %}
+
+{% block facebook %}
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:description" content="{{ article.text|striptags|length > 300 ? article.text|striptags|easyadmin_truncate(300, true, "...")|raw  : article.text|striptags|raw }}">
+    <meta property="og:url" content="{{ path('article',{ slug: article.slug }) }}">
+    <meta property="og:site_name" content="YOM - yoga on/off the mat">
+    <meta property="fb:app_id" content="259443575421830" />
+{% endblock %}
+
+{% block ogimage %}
+    <meta property="og:image" content="{{ vich_uploader_asset(article, 'imageFile') }}">
+{% endblock ogimage %}
 
 {% block body %}
 
@@ -22,47 +36,17 @@
                                 <li class="post-comment"><i class="ti-comment-alt"></i> <a href="#">{{ article.getComments|length }}</a> </li>
                             </ul>
                         </div>
-                        <div class="dlab-post-media dlab-img-effect zoom-slow"> <a href="#"><img src="{{ vich_uploader_asset(article, 'imageFile')   }}" alt="Image"></a> </div>
+                        
+                        <div class="dlab-post-media dlab-img-effect"> <a href="#"><img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="Image"></a> </div>
                         <div class="dlab-post-text">
-                        <p>{{ article.text|raw   }}</p>
-                            {# <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy 
-                                text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum 
-                                is simply dummy text of the printing and typesetting  printer a galley Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                Lorem Ipsum has been the industry's standard text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-                                make a type specimen  It has urvived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                It was popularised in 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text 
-                                ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen  
-                                It has urvived not only five centuries, but also the leap into electronic typesetting.</p>
-                            <blockquote>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Has been the industry's standard text ever since 
-                                the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimencenturies.</blockquote>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text 
-                                ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen  
-                                It has urvived not only five centuries, but also the leap into electronic typesetting.</p>
-                            <h5>Completely Responsive</h5>
-                            <img class="alignleft" width="300" src="{{ asset('images/blog/grid/pic4.jpg') }}" alt="">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                                ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only                                 
-                                five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-                                of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                                Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                It was popularised in the 1960s with the releasefive centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                It was popularised in the 1960s with the release</p>
-                            <div class="dlab-divider bg-gray-dark"></div>
-                            <img class="alignright" width="300" src="{{ asset('images/blog/grid/pic1.jpg') }}" alt="">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                                ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only                                 
-                                five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-                                of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                                Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                It was popularised in the 1960s with the release</p> #}
+                            <p>{{ article.text|raw   }}</p>   
+                        </div>
+                        <!--Facebook share button-->
+                        <div class="fb-share-button" data-href="{{ path('article',{ slug: article.slug }) }}" data-layout="button_count" data-size="small">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.yom-yoga.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
                         </div>
                     </div>
+
                     <div class="clear" id="comment-list">
                         <div class="comments-area" id="comments">
                             <h2 class="comments-title">Comments</h2>
@@ -77,7 +61,7 @@
                                             <div class="text-justify-left">{{ comment.comment }}</div>
                                         </div> #}
                                             <div class="comment-author vcard"> 
-                                                <img  class="avatar photo" src="{{ asset('images/testimonials/pic1.jpg') }}" alt="">
+                                                <!-- <img  class="avatar photo" src="{{ asset('images/testimonials/pic1.jpg') }}" alt=""> -->
                                                 <cite class="fn"> {{ comment.author}}</cite> <span class="says">says:</span> </div>
                                                 <div class="comment-meta"> <a href="#">{{ comment.dateCreation|date('d/m/Y') }}</a> </div>
                                                 <p>{{ comment.comment }} </p>
@@ -88,21 +72,20 @@
                                 {% endfor %}
                                 <!-- comment list END -->
                                 <!-- Form -->
-                                <div class="comment-respond" id="respond">
-                                    <h4 class="comment-reply-title" id="reply-title">Leave a Reply <small> <a style="display:none;" href="#" id="cancel-comment-reply-link" rel="nofollow">Cancel reply</a> </small> </h4>
-                                    {# action="http://sedatelab.com/developer/donate/wp-comments-post.php" #}
+                                <div class="comment-respond mb-5" id="respond">
+                                    <h4 class="comment-reply-title" id="reply-title">Leave a Reply  </h4>
                                     <form class="comment-form" id="commentform" method="post" >
                                         <p class="comment-form-author">
-                                            <label for="author">Name <span class="required">*</span></label>
-                                            <input type="text" name="author"  placeholder="Author" id="author">
+                                            <label for="author">Name</label>
+                                            <input type="text" required class="form-control" name="author"  placeholder="Author" id="author">
                                         </p>
                                         <p class="comment-form-email">
-                                            <label for="email">Email <span class="required">*</span></label>
-                                            <input type="text" placeholder="Email" name="email" id="email">
+                                            <label for="email">Email</label>
+                                            <input type="text" required class="form-control" placeholder="Email" name="email" id="email">
                                         </p>
                                         <p class="comment-form-comment">
                                             <label for="comment">Comment</label>
-                                            <textarea rows="8" name="comment" placeholder="comment" id="comment"></textarea>
+                                            <textarea rows="8" required class="form-control" name="comment" placeholder="comment" id="comment"></textarea>
                                         </p>
                                         <p class="form-submit">
                                         <label for="submit">Send</label>
@@ -120,7 +103,7 @@
                 <!-- Side bar start -->
                 
                
-                <div class="col-lg-3 col-md-4 sticky-top">
+                <div class="col-lg-3 col-md-4 sticky-top pt-4">
                     <aside  class="side-bar">
                         <div class="widget recent-posts-entry">
                             <h6 class="widget-title style-1">Recent Posts</h6>
@@ -129,7 +112,7 @@
                             {# {% for recentPost in recentArticles if recentPost.id != article.id %} #}
                             <div class="widget-post-bx">
                                 <div class="widget-post clearfix">
-                                    <div class="dlab-post-media"> <img src="{{ vich_uploader_asset(recentPost, 'imageFile')  }}" width="200" height="43" alt="{{ recentPost.title }}"> </div>
+                                    <div class="dlab-post-media"> <img src="{{ vich_uploader_asset(recentPost, 'imageFile')|imagine_filter('carre')  }}"  alt="{{ recentPost.title }}"> </div>
                                     
                                     <div class="dlab-post-info">
                                         <div class="dlab-post-header">
@@ -154,6 +137,6 @@
             </div>
         </div>
     </div>
-</div>
+
 <!-- Content END-->
 {% endblock %}

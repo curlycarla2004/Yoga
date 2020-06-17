@@ -130,7 +130,19 @@
     "guzzlehttp/psr7": {
         "version": "1.6.1"
     },
-
+    "helios-ag/fm-elfinder-bundle": {
+        "version": "10.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "10.0",
+            "ref": "dcc740749981bf9f4df447dae46483d41bad7f73"
+        },
+        "files": [
+            "./config/packages/fm_elfinder.yaml",
+            "./config/routes/fm_elfinder.yaml"
+        ]
+    },
     "imagine/imagine": {
         "version": "1.2.3"
     },
@@ -139,6 +151,12 @@
     },
     "jms/metadata": {
         "version": "2.1.0"
+    },
+    "knplabs/knp-components": {
+        "version": "v2.3.4"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.2.0"
     },
     "liip/imagine-bundle": {
         "version": "1.8",
@@ -228,7 +246,9 @@
             "./config/packages/stof_doctrine_extensions.yaml"
         ]
     },
-
+    "studio-42/elfinder": {
+        "version": "2.1.56"
+    },
     "symfony/asset": {
         "version": "v5.0.7"
     },

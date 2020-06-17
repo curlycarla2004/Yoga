@@ -1,27 +1,218 @@
-/* personalise css */
-#blogimage{
-    width: 570px !important;
-    height: 380px !important;
-}
-
-.footer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-}
-
+/*Parallax 1 image*/
 .parallax {
-    /* The image used */
-    background-image: url("/images/hanka.jpg");
-  
-    /* Set a specific height */
-    height: 850px;
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
+  /* The image used */
+  background-image: url("/images/hanka.jpg");
+  background-position: center center !important;
+
+  /* Set a specific height */
+  height:700px;
+
+}
+
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) {
+  .parallax{
+    background-image: url("/images/hankamobile.jpg");
+    background-size: cover;
+    background-position: center left !important;
+    height: 600px;
+    background-position: center ;
+  }
+  /* .header{
+    height:auto;
+  } */
+
+  /*parallax-about*/
+  .parallax-about{
+    /* background-image: none !important; */
+    /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.993) !important; */
+    /* background-position: center center !important; */
+    /* background-attachment: scroll !important; */
+    background-size: cover !important;
     background-repeat: no-repeat;
-    background-size: 100%;
   }
 
- 
+   /*parallax-yoga*/
+ .parallax-yoga{
+  /* background-position: center center !important; */
+  /* background-attachment: scroll !important; */
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  }
+  
+  .header-nav .nav > li > a {
+    font-size: 15px;
+    padding: 5px 24px;
+  }
+}
+
+@media only screen 
+and (min-device-width: 350px) 
+and (max-device-width: 1050px) and (orientation:landscape) {
+  .parallax{
+  background-image: url("/images/hanka.jpg");
+  background-position: center right !important;
+  }
+  .header-nav .nav > li > a {
+    font-size: 15px;
+    padding: 5px 24px;
+  }
+}
+
+@media only screen 
+and (min-device-width: 350px) 
+and (max-device-width: 1050px) 
+and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait){ 
+
+  .header-nav .nav > li > a {
+    font-size: 15px;
+    padding: 5px 24px;
+  }
+
+  
+  .parallax{
+    background-image: url("/images/hankamobile.jpg");
+    background-size: cover;
+    background-position: center left !important;
+    height: 500px;
+    background-position: center ;
+    -webkit-background-size: cover;
+  
+  }
+
+  /*parallax-about*/
+  .parallax-about{
+    /* background-image: none !important; */
+    /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.993) !important; */
+    /* background-position: center center !important; */
+    /* background-attachment: scroll !important; */
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+  }
+
+ /*parallax-yoga*/
+ .parallax-yoga{
+  /* background-position: center center !important; */
+  /* background-attachment: scroll !important; */
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  }
+
+  /* Parallax section Pricing*/
+  .parallax-pricing{
+    /* background-position: center center !important; */
+    /* background-attachment: scroll !important; */
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+  }
+
+  .header{
+    height: auto;
+  }
+  #blogimage{
+    /* width: 570px !important; */
+    height: 250px !important;
+  }
+}
+
+/* Parallax section about*/
+.parallax-about {
+  /* The image used */
+  /* background-image: url("/images/about.jpg"); */
+  /* background: linear-gradient(rgba(20, 1, 1, 0.6), rgba(20, 1, 1, 0.6)); */
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  /* background-size: 100%; */
+}
+
+.text-about{
+  color:rgba(255,255,255, 1);
+  font-weight: bolder;
+}
+
+/* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
+/* @media only screen and (max-device-width: 600px) {
+.parallax-about {
+  background-color: white
+} */
+
+/* Parallax section Yoga*/
+.parallax-yoga {
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+
+.text-yoga{
+  color:rgba(255,255,255, 1);
+  font-weight: bolder;
+}
+
+/* Parallax section Pricing*/
+.parallax-practice {
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+
+.text-practice{
+  color:rgba(255,255,255, 1) !important;
+  font-weight: bolder;
+}
+
+
+/* .bg-img-fix {
+background-attachment: fixed;
+background-size: cover;
+} */
+
+/* Parallax section Pricing*/
+.parallax-contact {
+box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+/* Create the parallax scrolling effect */
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+-webkit-background-size: cover;
+}
+
+.text-contact{
+color:rgba(255,255,255, 1) !important;
+font-weight: bolder;
+}
+
+/*buttons active pagination color*/
+.page-item.active .page-link {
+background-color: black;
+border-color: black;
+}
+
+.pagination {
+display: block ruby !important;
+}
+
+.h2{
+font-size: 32px;
+line-height: 45px;
+margin-bottom: 25px;
+}
+

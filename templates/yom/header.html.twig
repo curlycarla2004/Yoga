@@ -6,24 +6,22 @@
             <div class="container clearfix">
                 <!-- website logo -->
                 <div class="logo-header mostion">
-                    <a href="{{ path('accueil') }}"><img src="{{ asset ('images/YOMlogo.png') }}" alt=""></a>
+                    <a href="{{ path('accueil') }}"><img src="{{ asset('/images/YOMlogo.png') }}" alt="Yom logo"></a>
                 </div>
                 <!-- nav toggle button -->
                 <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
                 <!-- main nav -->
-                <div class="header-nav navbar-collapse collapse navbar myNavbar justify-content-end" id="navbarNavDropdown" >
+                <div class="header-nav navbar-collapse collapse navbar myNavbar justify-content-end" >
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ path('accueil') }}#home" class="nav-link {{ linkScroll }} ">Home</a></li>
-                        <li><a href="{{ path('accueil') }}#about-us" class="nav-link {{ linkScroll }}">About</a></li>
+                        <li ><a href="{{ path('accueil') }}#about-us" class="nav-link {{ linkScroll }}">About</a></li>
                         <li><a href="{{ path('accueil') }}#yoga" class="nav-link {{ linkScroll }}">Yoga</a></li>
-                        {# <li><a href="{{ path('accueil') }}#coaching" class="nav-link {{ linkScroll }}">Coaching</a></li> #}
-                        <li><a href="{{ path('accueil') }}#prices" class="nav-link {{ linkScroll }}">Prices</a></li>
-                        <li><a href="{{ path('articles') }}" class="{{ currentPage starts with 'article' ? 'active' }}">Notes</a></li>
+                        <li><a href="{{ path('accueil') }}#practice" class="nav-link {{ linkScroll }}">Practice</a></li>
+                        <li><a href="{{ path('articles') }}" class="nav-link {{ currentPage starts with 'article' ? 'active' }}">Notes</a></li>
                         <li><a href="{{ path('accueil') }}#contact" class="nav-link {{ linkScroll }}">Contact</a></li>
-                        <li><a href="https://www.instagram.com/liveyomlife/" target="_blank" class="icon-cell"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://www.facebook.com/liveyomlife/" target="_blank" class="icon-cell"><i class="fa fa-facebook-square"></i></a></li>
-                        <li><a href="#" target="_blank" class="icon-cell"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#" target="_blank" class="icon-cell"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.instagram.com/yom_yoga_/" target="_blank" class="nav-link"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/liveyomlife/" target="_blank" class="nav-link"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/hana-hnilicov%C3%A1" target="_blank" class="nav-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCNitqPDyuOoWeQ6qz0xbcsQ/about" target="_blank" class="nav-link"><i class="fa fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>

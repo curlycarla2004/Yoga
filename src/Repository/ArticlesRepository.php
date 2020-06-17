@@ -19,9 +19,10 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
-    public function getRecentArticles($currentId = null) {
+    public function getRecentArticles($currentSlug = null) {
         return $this->createQueryBuilder('a')
-            ->where('a.id != :currentId')->setParameter('currentId', $currentId)
+            ->where('a.slug != :currentSlug')->setParameter('currentSlug', $currentSlug)
+            ->andWhere('a.active = 1')
             ->orderBy('a.id', 'DESC')
             ->setMaxResults(3)
             ->getQuery()
