@@ -5,16 +5,9 @@ twig:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 
 fos_ck_editor:
-    # default_config: main_config
     configs:
         main_config:
             toolbar: full
-                
-            # toolbar:
-            #    - { name: "styles", items: ['Bold', 'Italic', 'Underline', 'Strike','Blockquote', '-', 'Link', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Image', 'Table', '-', 'Styles', 'Format','Font','FontSize', '-', 'TextColor', 'BGColor', 'Source'] }
-            #    - { name: "editor2" , items: ['imageuploader']}
-            #filebrowserBrowseRoute: elfinder
-            #filebrowserBrowseRouteParameters: []
 
             filebrowserImageUploadRoute: admin_upload_image
             filebrowserImageUploadRouteParameters: { upload: 1 }

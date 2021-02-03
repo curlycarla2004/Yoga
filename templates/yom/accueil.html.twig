@@ -10,7 +10,8 @@
     <div class="parallax"></div> 
 
     <!-- About Us -->
-    <div class="section-full parallax-about content-inner-1 dlab-about-1" id="about-us" style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_about_background)}})">
+    <div class="section-full parallax-about content-inner-1 dlab-about-1" id="about-us" 
+    style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_about_background)}})">
         <div class="container">
         <div class="section-head text-white text-center">
                 <h2 class="text-uppercase textwhite" >{{ content.accueil_title_about |raw}}</h2>
@@ -45,9 +46,7 @@
     </div>
     <!-- Yoga END -->
 
-  
-
-    <!-- Practice Accordion Bg Primary  -->
+    <!-- Practice Accordion bootstrap  -->
     <div class="section-full parallax-practice bg-white content-inner" id="practice" style="background-image: url({{asset('uploads/images/content/' ~ content.accueil_image_practice_background)}})">
         <div class="container">
             <div class="section-head text-white text-center">
@@ -91,7 +90,7 @@
             </div>
         </div>	
     </div>	
-    <!-- Pricing END -->
+    <!-- Practice END -->
 
     <!-- NOTES -  Blog -->
     <div class="section-full bg-white content-inner-1" id="notes">
@@ -151,14 +150,14 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input name="lastname" type="text" required class="form-control" placeholder="Your Last Name">
+                                                    <input name="lastname" type="text" required class="form-control" placeholder="Your Last Name" id="lastname">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input name="firstname" type="text" required class="form-control" placeholder="Your First Name">
+                                                    <input name="firstname" type="text" required class="form-control" placeholder="Your First Name" id="firstname">
                                                 </div>
                                             </div>
                                         </div>
@@ -166,32 +165,24 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group"> 
-                                                    <input name="email" type="email" class="form-control"  required  placeholder="Your Email" >
+                                                    <input name="email" type="email" class="form-control"  required  placeholder="Your Email" id="email">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input name="subject" type="text" required class="form-control"  placeholder="Subject">
+                                                    <input name="subject" type="text" required class="form-control"  placeholder="Subject" id="subject">
                                                 </div>
                                             </div>
                                         </div>
                                             <div class="col-lg-12">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <textarea name="message" rows="4" class="form-control" required placeholder="Your Message..."></textarea>
+                                                    <textarea name="message" rows="4" class="form-control" required placeholder="Your Message..." id="message"></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        {# <div class="col-lg-12">
-                                            <div class="form-group recaptcha-box">
-                                                <div class="input-group">
-                                                    <div class="g-recaptcha" data-sitekey="6LfCgPkUAAAAAChG21ixTmEsUEZ_DWkaSAgjFVnl" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                                                    <input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
-                                                </div>
-                                            </div>
-                                        </div> #}
                                         <div class="col-lg-12">
                                             <button name="submit" type="submit" value="Submit" class="site-button "> <span>Submit</span> </button>
                                         </div>

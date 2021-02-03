@@ -25,7 +25,6 @@ class EmailService{
     }
 
     public function send($data){
-
         $data = array_merge($this->data, $data);
         if(!$data['from']) {$data ['from'] = $_ENV['MY_EMAIL'] ; }
         if(!$data['to']) {$data ['to'] = $_ENV['MY_EMAIL'] ; }

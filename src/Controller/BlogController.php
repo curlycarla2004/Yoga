@@ -19,13 +19,17 @@ class BlogController extends AbstractController
      *      
      * @Route("/admin/create_article/{slug}", name="create_article")
      */
-    public function create_article($id = null, $slug = null, ArticlesRepository $articlesRepo, Request $request)
+    public function create_article($slug = null, ArticlesRepository $articlesRepo, Request $request)
     {
-        $hasAccess = $this->isGranted('ROLE_ADMIN');
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $hasAccess = $this->isGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
         
+        // if(!$hasAccess) {
+        //     throw new \Exception("vous n'avez pas acces.");
+        // }
+
         $em = $this->getDoctrine()->getManager();
-        if(!$id || $slug) {
+        if(!$slug) {
             $article = new Articles();
 
             // $article->setTitle('title');
@@ -166,19 +170,14 @@ class BlogController extends AbstractController
      */
     public function articles( Request $request, ArticlesRepository $articlesRepo, PaginatorInterface $paginator)
     {
-        // Uniquement $active == 1
-        // $articles = $articlesRepo->findBy(array('active'=> 1));
-
         $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy(array('active'=> 1));
         $articles = $paginator->paginate(
             $donnees, // Requête contenant les données à paginer (ici nos articles)
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
             4 // Nombre de résultats par page
         );
-
         return $this->render('blog/articles.html.twig', [
             'articles' => $articles,
-            
         ]);
     }
 

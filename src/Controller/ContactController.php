@@ -17,8 +17,6 @@ class ContactController extends AbstractController
      */
     public function contact(Request $request, EmailService $emailService)
     {
-        // $data=$request->request->all();
-        //new contact
         if($request->isMethod('POST')){
             $data=$request->request->all();
             $contact = (new Contact())
@@ -36,16 +34,10 @@ class ContactController extends AbstractController
         //appeler/injecter  Email service 
         $emailService->contact($contact);
         //dans Email service cree function contact
-
-        // $emailservice->contact($contact)
-
-
         $response= array(
             'status'=> 1,
             'msg'=> 'Your message has been succesfully sent.'
         );
-
         return new JsonResponse($response);
-        
     }
 }

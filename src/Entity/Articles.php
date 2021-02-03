@@ -58,7 +58,8 @@ class Articles
     private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="article", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", 
+     * mappedBy="article", orphanRemoval=true)
      */
     private $comments;
 
@@ -171,15 +172,15 @@ class Articles
         return $this->comments;
     }
 
-    public function addComment(Comments $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setArticle($this);
-        }
+    // public function addComment(Comments $comment): self
+    // {
+    //     if (!$this->comments->contains($comment)) {
+    //         $this->comments[] = $comment;
+    //         $comment->setArticle($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function removeComment(Comments $comment): self
     {
