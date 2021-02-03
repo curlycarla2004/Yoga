@@ -46,8 +46,6 @@ easy_admin:
         templates:
           edit: 'easyadmin/articles/edit.html.twig'
       
-      
-      # -------
       Contact:
         class: App\Entity\Contact
         disabled_actions: [new, edit]
