@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.0|^7.1|^7.2.5|^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "^2.3",
@@ -10,7 +10,7 @@
         "gedmo/doctrine-extensions": "^2.4",
         "helios-ag/fm-elfinder-bundle": "^10.0",
         "knplabs/knp-paginator-bundle": "^5.2",
-        "liip/imagine-bundle": "^2.3",
+        "liip/imagine-bundle": "^2.3.0",
         "pgrimaud/instagram-user-feed": "^5.6",
         "sensio/framework-extra-bundle": "^5.5",
         "stof/doctrine-extensions-bundle": "^1.4",
@@ -89,7 +89,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.0.*"
+            "require": "4.4.*"
         }
     }
 }
