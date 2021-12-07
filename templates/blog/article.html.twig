@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Yom Blog - {{article.title}} {% endblock %}
+{% block description %}{{{{ article.text|striptags|length > 300 ? article.text|striptags|easyadmin_truncate(300, true, "...")|raw  : article.text|striptags|raw }}}}{% endblock %}
 
 {% block facebook %}
     <meta property="og:locale" content="en_US">
