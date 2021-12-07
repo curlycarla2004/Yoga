@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3511b2ce8cbe7e77aa756e560bcb875",
+    "content-hash": "5c59a3a993bb4fce84a426f7add19cf4",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3129,16 +3129,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.57",
+            "version": "2.1.60",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "087524b1d7a4d76cfd848dee2093cd8daf987f78"
+                "reference": "e5ca28f04d37b98d82df92dbdd4ad7cb8ef76911"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/087524b1d7a4d76cfd848dee2093cd8daf987f78",
-                "reference": "087524b1d7a4d76cfd848dee2093cd8daf987f78",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/e5ca28f04d37b98d82df92dbdd4ad7cb8ef76911",
+                "reference": "e5ca28f04d37b98d82df92dbdd4ad7cb8ef76911",
                 "shasum": ""
             },
             "require": {
@@ -3183,7 +3183,17 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2020-06-05T08:06:57+00:00"
+            "support": {
+                "issues": "https://github.com/Studio-42/elFinder/issues",
+                "source": "https://github.com/Studio-42/elFinder/tree/2.1.60"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/nao-pon",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-11-12T06:00:21+00:00"
         },
         {
             "name": "symfony/asset",
@@ -8334,9 +8344,10 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2.5",
+        "php": "^7.0|^7.1|^7.2.5|^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
 }
