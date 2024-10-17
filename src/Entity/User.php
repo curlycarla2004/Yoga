@@ -118,15 +118,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getSalt()
-    {
-        // not needed when using the "bcrypt" algorithm in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
@@ -161,5 +153,10 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email; // or return $this->username if that's your identifier
     }
 }

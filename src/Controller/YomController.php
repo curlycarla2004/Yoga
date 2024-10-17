@@ -4,16 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use App\Repository\ArticlesRepository;
 use App\Repository\ContentRepository;
 
-
 class YomController extends AbstractController
 {
+    // #[Route('/', name: 'accueil', methods: ['GET'])] //
     /**
      * @Route("/", name="accueil")
      */
-    public function accueil(ArticlesRepository $articlesRepo,  ContentRepository $contentRepo)
+    public function accueil(ArticlesRepository $articlesRepo,  ContentRepository $contentRepo): Response
     {
         $articles = $articlesRepo->findBy(array('active'=> 1));
         $content = $contentRepo->findContent();
@@ -23,7 +24,12 @@ class YomController extends AbstractController
         ]);
     }
 
-        
+    #[Route('/', name: 'test')]
+    public function test(): Response
+    {
+        // Controller logic here
+        return $this->render('yom/accueil.html.twig');
+    }
 
     public function header($currentPage){
         return $this->render('yom/header.html.twig' , [
@@ -31,6 +37,4 @@ class YomController extends AbstractController
             'linkScroll' => $currentPage == 'accueil' ? 'scroll' : '',
         ]);
     }
-
-
 }

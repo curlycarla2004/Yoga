@@ -22,8 +22,8 @@ class ArticlesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       
-        
+
+
         $builder
             ->add('title', TextType::class, [
                 'label' => "Add a title",
@@ -38,7 +38,7 @@ class ArticlesType extends AbstractType
             //         'extraPlugins'=>'youtube'
             //         ),
             // ))
-                
+
             // ->add('text', TextareaType::class, [
             //     'attr'=>['class'=>'summernote' ],
             // ])            
