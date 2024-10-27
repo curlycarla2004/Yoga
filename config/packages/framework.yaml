@@ -18,4 +18,5 @@ framework:
     csrf_protection: true
     router:
         utf8: true
+        default_uri: null
 

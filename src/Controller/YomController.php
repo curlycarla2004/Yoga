@@ -10,10 +10,7 @@ use App\Repository\ContentRepository;
 
 class YomController extends AbstractController
 {
-    // #[Route('/', name: 'accueil', methods: ['GET'])] //
-    /**
-     * @Route("/", name="accueil")
-     */
+    #[Route('/', name: 'accueil', methods: ['GET'])]
     public function accueil(ArticlesRepository $articlesRepo,  ContentRepository $contentRepo): Response
     {
         $articles = $articlesRepo->findBy(array('active'=> 1));
@@ -24,11 +21,30 @@ class YomController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'test')]
-    public function test(): Response
+    #[Route('/test', name: 'test')]
+    public function test(ArticlesRepository $articlesRepo,  ContentRepository $contentRepo): Response
     {
+        $articles = $articlesRepo->findBy(array('active' => 1));
+
+        $content = $contentRepo->findContent();
         // Controller logic here
-        return $this->render('yom/accueil.html.twig');
+        $html = '<html><body>';
+        $html .= '<h1>Welcome to Accueil</h1>';
+
+        // Display articles
+        $html .= '<h2>Articles</h2>';
+        foreach ($articles as $article) {
+            $html .= '<div><strong>' . htmlspecialchars($article->getTitle()) . '</strong></div>';
+        }
+
+        // Display content
+        $html .= '<h2>Content</h2>';
+        $html .= '<p>' . htmlspecialchars($content->getText()) . '</p>';
+
+        $html .= '</body></html>';
+
+        // Return the response with the HTML content
+        return new Response($html);
     }
 
     public function header($currentPage){

@@ -37,3 +37,4 @@ services:
             $passwordHasher: '@security.password_hasher'
     Symfony\Component\Security\Csrf\CsrfTokenManagerInterface:
         alias: 'security.csrf.token_manager'
+

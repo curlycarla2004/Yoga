@@ -9,10 +9,8 @@ use App\Repository\ContentRepository;
 
 class ContentController extends AbstractController
 {
-    /**
-     * @Route("/content", name="content")
-     */
-    public function index(ArticlesRepository $articlesRepo, ContentRepository $contentRepo)
+    #[Route('/content', name: 'content')]
+    public function index(ArticlesRepository $articlesRepo, ContentRepository $contentRepo): Response
     {
         $articles = $articlesRepo->findAll();
         $content = $contentRepo->findContent();

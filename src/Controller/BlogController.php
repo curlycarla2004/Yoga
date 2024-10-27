@@ -14,12 +14,9 @@ use App\Form\ArticlesType;
 
 
 class BlogController extends AbstractController
-{    
-    /**
-     *      
-     * @Route("/admin/create_article/{slug}", name="create_article")
-     */
-    public function create_article($slug = null, ArticlesRepository $articlesRepo, Request $request)
+{
+    #[Route('/admin/create_article/{slug}', name: 'create_article', methods: ['GET', 'POST'])]
+    public function create_article(EntityManagerInterface $em, $slug = null, ArticlesRepository $articlesRepo, Request $request): Response
     {
         // $hasAccess = $this->isGranted('ROLE_ADMIN');
         // $this->denyAccessUnlessGranted('ROLE_ADMIN');
@@ -27,8 +24,8 @@ class BlogController extends AbstractController
         // if(!$hasAccess) {
         //     throw new \Exception("vous n'avez pas acces.");
         // }
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $em = $this->getDoctrine()->getManager();
         if(!$slug) {
             $article = new Articles();
 
@@ -83,9 +80,11 @@ class BlogController extends AbstractController
                 //     ->setDateCreation( new \DateTime() )
                 //     ->setActive(1)
                 //     ;
-                // } 
-                
-                $em = $this->getDoctrine()->getManager();
+                // }
+                if ($nouveau) {
+                    $article->setDateCreation(new \DateTime())->setActive(1);
+                }
+
                 $em->persist($article);
                 $em->flush();
 
@@ -103,16 +102,14 @@ class BlogController extends AbstractController
         ]);
     }
 
-     /**
-     * @Route("/article/{slug}", name="article")
-     */
-    public function article($slug, Request $request, ArticlesRepository $articlesRepo){
-        $em = $this->getDoctrine()->getManager(); //em entity manager
-        $articlesRepo = $em->getRepository(Articles::class);
+    #[Route('/article/{slug}', name: 'article', methods: ['GET', 'POST'])]
+    public function article($slug, Request $request, ArticlesRepository $articlesRepo, EntityManagerInterface $em): Response
+    {
+//        $articlesRepo = $em->getRepository(Articles::class);
 
         // $active == 1
         $article = $articlesRepo->findOneBySlug($slug);
-        // dd($article);
+
         if (!$article) {
             $this->addFlash('danger', "L'article demandé n'a pas été trouvé");
             return $this->redirectToRoute('articles');    
@@ -127,8 +124,13 @@ class BlogController extends AbstractController
                 $commentsRepo = $em->getRepository(Comments::class);
                 $comment = $commentsRepo->find($id_comment);
 
-                $em->remove($comment);
-                $em->flush();
+//                $em->remove($comment);
+//                $em->flush();
+                if ($comment) {
+                    $em->remove($comment);
+                    $em->flush();
+                    $this->addFlash('warning', "Le commentaire a bien été supprimé.");
+                }
             
                 return $this->redirectToRoute('article' , ['id' => $article->getId() ]);
             }
@@ -149,28 +151,31 @@ class BlogController extends AbstractController
 
             //$this->addFlash('success', "Your comment has been published!");
             //_fragment helps to get me back to the newly created comment once posted
-            return $this->redirectToRoute('article', ['slug' => $article->getSlug(), '_fragment' => 'comment-'.$comment->getId() ]);
+            return $this->redirectToRoute('article', [
+                'slug' => $article->getSlug(),
+                '_fragment' => 'comment-'.$comment->getId()
+            ]);
         }
 
         $postId = $request->get('slug');
         $post = $em->getRepository(Articles::class)->findOneBySlug($postId);
-        $recentArticles = $em->getRepository(Articles::class)->getRecentArticles($post->getSlug());
+//        $recentArticles = $em->getRepository(Articles::class)->getRecentArticles($post->getSlug());
 
+        $recentArticles = $articlesRepo->getRecentArticles($article->getSlug());
         return $this->render('blog/article.html.twig', [
             'article' => $article,
-            'post'=>$post,
+            'post'=> $post,
             'recentArticles'=> $recentArticles,
             'slug'=>$slug
         ]);
             
      }
 
-     /**
-     * @Route("/articles", name="articles")
-     */
-    public function articles( Request $request, ArticlesRepository $articlesRepo, PaginatorInterface $paginator)
+    #[Route('/articles', name: 'articles', methods: ['GET'])]
+    public function articles( Request $request, ArticlesRepository $articlesRepo, PaginatorInterface $paginator, EntityManagerInterface $em): Response
     {
-        $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy(array('active'=> 1));
+//        $donnees = $this->getDoctrine()->getRepository(Articles::class)->findBy(array('active'=> 1));
+        $donnees = $articlesRepo->findBy(['active' => 1]);
         $articles = $paginator->paginate(
             $donnees, // Requête contenant les données à paginer (ici nos articles)
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
@@ -180,8 +185,5 @@ class BlogController extends AbstractController
             'articles' => $articles,
         ]);
     }
-
-
-
 }
     
